@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Swap</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="review">Review</string>
+    <string name="library">Library</string>
+</resources>
