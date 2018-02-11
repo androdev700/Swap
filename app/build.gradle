@@ -25,11 +25,37 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.+'
-    implementation 'com.android.support:design:27.+'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    // Support Library
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-annotations:27.0.2'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:support-v13:27.0.2'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:customtabs:27.0.2'
+    compile 'com.android.support:gridlayout-v7:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
+    // Circular Image View
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    // Firebase
+    compile 'com.google.firebase:firebase-database:11.4.2'
+    compile 'com.google.firebase:firebase-core:11.4.2'
+    compile 'com.google.firebase:firebase-messaging:11.4.2'
+    compile 'com.google.firebase:firebase-auth:11.4.2'
+    // Firebase UI
+    compile 'com.firebaseui:firebase-ui-auth:3.1.0'
+    // Displaying images
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    // App Intro
+    compile 'com.github.apl-devs:appintro:v4.2.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+
+
+
+
+apply plugin: 'com.google.gms.google-services'

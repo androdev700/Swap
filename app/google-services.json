@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "784679449890",
+    "firebase_url": "https://swap-team.firebaseio.com",
+    "project_id": "swap-team",
+    "storage_bucket": "swap-team.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784679449890:android:e3885839cadc3cd9",
+        "android_client_info": {
+          "package_name": "com.andro.swap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784679449890-7av12dn9kt3qeecv9l2n43fi046p0rug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andro.swap",
+            "certificate_hash": "7e378de15c899c0e0e3e5a7e921d87962d1d050b"
+          }
+        },
+        {
+          "client_id": "784679449890-c4pgknigblai0bqla72rqal72lcgvkdr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvpl9AHt14ejSgKHbpbwn4d85h-nPo3yY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784679449890-c4pgknigblai0bqla72rqal72lcgvkdr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

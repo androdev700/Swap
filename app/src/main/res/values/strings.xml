@@ -4,4 +4,13 @@
     <string name="profile">Profile</string>
     <string name="review">Review</string>
     <string name="library">Library</string>
+    <string name="app_name_caps">SWAP</string>
+
+    <string name="home_caps">HOME</string>
+    <string name="profile_caps">PROFILE</string>
+    <string name="review_caps">REVIEW</string>
+    <string name="library_caps">LIBRARY</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
