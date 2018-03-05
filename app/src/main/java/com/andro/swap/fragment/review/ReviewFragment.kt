@@ -1,4 +1,4 @@
-package com.andro.swap.profile
+package com.andro.swap.fragment.review
 
 
 import android.os.Bundle
@@ -13,18 +13,18 @@ import com.andro.swap.R
 /**
  * A simple [Fragment] subclass.
  */
-class ProfileFragment : Fragment() {
+class ReviewFragment : Fragment() {
 
     companion object {
-        fun newInstance(): ProfileFragment {
-            return ProfileFragment()
+        fun newInstance(): ReviewFragment {
+            return ReviewFragment()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return inflater.inflate(R.layout.fragment_review, container, false)
     }
 
 }// Required empty public constructor

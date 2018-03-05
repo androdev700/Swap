@@ -1,4 +1,4 @@
-package com.andro.swap.library
+package com.andro.swap.fragment.home
 
 
 import android.os.Bundle
@@ -13,18 +13,18 @@ import com.andro.swap.R
 /**
  * A simple [Fragment] subclass.
  */
-class LibraryFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     companion object {
-        fun newInstance(): LibraryFragment {
-            return LibraryFragment()
+        fun newInstance(): HomeFragment {
+            return HomeFragment()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_library, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
 }// Required empty public constructor

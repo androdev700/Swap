@@ -1,7 +1,8 @@
-package com.andro.swap
+package com.andro.swap.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import com.andro.swap.R
 
 class AddInfoActivity : AppCompatActivity() {
 

@@ -1,9 +1,10 @@
-package com.andro.swap
+package com.andro.swap.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.Nullable
 import android.support.v4.app.Fragment
+import com.andro.swap.R
 import com.github.paolorotolo.appintro.AppIntro2
 import com.github.paolorotolo.appintro.AppIntro2Fragment
 

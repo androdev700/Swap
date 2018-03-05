@@ -1,4 +1,4 @@
-package com.andro.swap
+package com.andro.swap.util
 
 import android.annotation.SuppressLint
 import android.support.design.internal.BottomNavigationItemView

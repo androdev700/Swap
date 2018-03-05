@@ -1,4 +1,4 @@
-package com.andro.swap.review
+package com.andro.swap.fragment.library
 
 
 import android.os.Bundle
@@ -13,18 +13,18 @@ import com.andro.swap.R
 /**
  * A simple [Fragment] subclass.
  */
-class ReviewFragment : Fragment() {
+class LibraryFragment : Fragment() {
 
     companion object {
-        fun newInstance(): ReviewFragment {
-            return ReviewFragment()
+        fun newInstance(): LibraryFragment {
+            return LibraryFragment()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review, container, false)
+        return inflater.inflate(R.layout.fragment_library, container, false)
     }
 
 }// Required empty public constructor

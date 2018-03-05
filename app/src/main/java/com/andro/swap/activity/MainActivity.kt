@@ -1,4 +1,4 @@
-package com.andro.swap
+package com.andro.swap.activity
 
 import android.app.Activity
 import android.content.Context
@@ -10,10 +10,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.andro.swap.home.HomeFragment
-import com.andro.swap.library.LibraryFragment
-import com.andro.swap.profile.ProfileFragment
-import com.andro.swap.review.ReviewFragment
+import com.andro.swap.R
+import com.andro.swap.fragment.home.HomeFragment
+import com.andro.swap.fragment.library.LibraryFragment
+import com.andro.swap.fragment.profile.ProfileFragment
+import com.andro.swap.fragment.review.ReviewFragment
+import com.andro.swap.util.BottomNavigationViewHelper
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -70,6 +72,9 @@ class MainActivity : AppCompatActivity() {
         navigation.selectedItemId = R.id.home
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
+        setSupportActionBar(findViewById(R.id.app_toolbar))
+        supportActionBar?.title = ""
+
         // Initialize Firebase components
         mFirebaseDatabase = FirebaseDatabase.getInstance()
         mFirebaseAuth = FirebaseAuth.getInstance()
@@ -82,8 +87,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 // User is signed out
                 onSignedOutCleanup()
-                startActivityForResult(
-                        AuthUI.getInstance().createSignInIntentBuilder()
+                startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder()
                                 .setIsSmartLockEnabled(true)
                                 .setAvailableProviders(Arrays.asList(
                                         AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
@@ -121,19 +125,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        //inflater.inflate(R.menu.main_menu, menu)
+        inflater.inflate(R.menu.main_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        /*when (item.getItemId()) {
-            R.id.sign_out_menu -> {
+        return when (item.itemId) {
+            R.id.logout -> {
                 AuthUI.getInstance().signOut(this)
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
-        }*/
-        return true
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun onSignedInInitialize(username: String?) {

@@ -1,4 +1,4 @@
-package com.andro.swap.home
+package com.andro.swap.fragment.profile
 
 
 import android.os.Bundle
@@ -13,18 +13,18 @@ import com.andro.swap.R
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
+        fun newInstance(): ProfileFragment {
+            return ProfileFragment()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
 }// Required empty public constructor

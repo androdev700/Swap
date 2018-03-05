@@ -5,17 +5,17 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andro.swap.MainActivity">
+    tools:context="com.andro.swap.activity.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/app_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
+        android:background="@color/primaryColor"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:theme="@style/LightOverflow"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
 
         <TextView
             android:id="@+id/app_toolbar_text"

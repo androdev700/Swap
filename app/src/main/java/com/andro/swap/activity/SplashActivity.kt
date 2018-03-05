@@ -1,10 +1,11 @@
-package com.andro.swap
+package com.andro.swap.activity
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import com.andro.swap.R
 
 
 class SplashActivity : AppCompatActivity() {
