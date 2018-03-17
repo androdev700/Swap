@@ -9,10 +9,6 @@ import android.view.ViewGroup
 
 import com.andro.swap.R
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class LibraryFragment : Fragment() {
 
     companion object {
@@ -23,8 +19,6 @@ class LibraryFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_library, container, false)
     }
-
-}// Required empty public constructor
+}

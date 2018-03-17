@@ -1,18 +1,20 @@
 package com.andro.swap.fragment.profile
 
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.andro.swap.R
+import com.andro.swap.activity.IntroActivity
+import com.bumptech.glide.Glide
+import com.firebase.ui.auth.AuthUI
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class ProfileFragment : Fragment() {
 
     companion object {
@@ -21,10 +23,23 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
-}// Required empty public constructor
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        profile_name.text = context?.getSharedPreferences("userData", Context.MODE_PRIVATE)?.getString("userName", "No Data")
+        profile_email.text = context?.getSharedPreferences("userData", Context.MODE_PRIVATE)?.getString("email", "No Data")
+        Glide.with(view)
+                .load(context?.getSharedPreferences("userData", Context.MODE_PRIVATE)?.getString("photoUrl", "No Data"))
+                .into(profile_image)
+
+        profile_logout.setOnClickListener {
+            AuthUI.getInstance().signOut(context!!)
+            activity?.finish()
+            startActivity(Intent(context, IntroActivity::class.java))
+        }
+    }
+}

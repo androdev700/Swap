@@ -7,20 +7,20 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.andro.swap.R
 
-
 class SplashActivity : AppCompatActivity() {
 
-    private val TIMEOUT = 500L
+    companion object {
+        private const val TIMEOUT = 500L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler().postDelayed({
-            val i: Intent
-            if (getSharedPreferences("isFirstLaunch", Context.MODE_PRIVATE).getBoolean("IS_FIRST", true)) {
-                i = Intent(this@SplashActivity, IntroActivity::class.java)
+            val i: Intent = if (getSharedPreferences("isFirstLaunch", Context.MODE_PRIVATE).getBoolean("IS_FIRST", true)) {
+                Intent(this@SplashActivity, IntroActivity::class.java)
             } else {
-                i = Intent(this@SplashActivity, MainActivity::class.java)
+                Intent(this@SplashActivity, MainActivity::class.java)
             }
             startActivity(i)
             finish()

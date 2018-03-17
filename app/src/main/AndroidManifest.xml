@@ -29,15 +29,17 @@
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".util.ISBNScannerHelper"
+            android:name=".util.ISBNScanner"
             android:screenOrientation="portrait" />
         <activity
-            android:label="Add Book"
             android:name=".activity.AddBookActivity"
+            android:label="Add Book"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeWithAppBar" />
-
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

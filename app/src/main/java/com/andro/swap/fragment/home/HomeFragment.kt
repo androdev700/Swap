@@ -10,9 +10,6 @@ import android.view.ViewGroup
 import com.andro.swap.R
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class HomeFragment : Fragment() {
 
     companion object {
@@ -21,10 +18,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-}// Required empty public constructor
+}
