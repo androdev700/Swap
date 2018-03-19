@@ -7,10 +7,31 @@
     android:orientation="vertical"
     tools:context=".activity.AddBookActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primaryColor"
+        android:elevation="4dp"
+        android:theme="@style/LightOverflow"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/app_toolbar_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Add Book"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_margin="16dp"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -20,11 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_weight=".9"
             android:fontFamily="sans-serif-condensed"
-            android:hint="@string/enter_isbn" />
+            android:hint="@string/enter_isbn"
+            android:inputType="number"
+            android:maxLength="13"
+            android:maxLines="1" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/scanISBN"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".1"
             android:padding="5dp"
@@ -32,52 +56,13 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
+    <Button
+        android:id="@+id/addBookButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:elevation="10dp"
-        app:cardBackgroundColor="@color/secondaryColor"
-        app:cardCornerRadius="10dp">
-
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-condensed"
-            android:padding="10dp"
-            android:text="ADD BOOK"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-    </android.support.v7.widget.CardView>
-
-    <LinearLayout
-        android:id="@+id/bookDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Title"
-            android:textAlignment="viewStart" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/textAuthor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Author"
-            android:textAlignment="viewStart" />
-
-    </LinearLayout>
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Add book to library"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.andro.swap.R
+import com.andro.swap.util.GetBook
 import com.andro.swap.util.ISBNScanner
 import kotlinx.android.synthetic.main.activity_add_book.*
 
@@ -17,6 +18,14 @@ class AddBookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
+
+        addBookButton.setOnClickListener {
+            if (editTextISBN.text.length < 10) {
+                Toast.makeText(this, "ISBN too short", Toast.LENGTH_LONG).show()
+            } else {
+                GetBook(editTextISBN.text.toString(), this)
+            }
+        }
 
         scanISBN.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {

@@ -7,8 +7,4 @@
         android:icon="@drawable/ic_add"
         android:title="Add book to library"
         app:showAsAction="always" />
-
-    <item
-        android:id="@+id/logout"
-        android:title="Logout" />
 </menu>

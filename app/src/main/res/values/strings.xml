@@ -12,6 +12,5 @@
     <string name="library_caps">LIBRARY</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_isbn">Enter ISBN-13 or ISBN-10</string>
 </resources>

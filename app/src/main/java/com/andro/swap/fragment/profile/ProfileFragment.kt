@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.andro.swap.R
-import com.andro.swap.activity.IntroActivity
+import com.andro.swap.activity.WelcomeActivity
 import com.bumptech.glide.Glide
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
         profile_logout.setOnClickListener {
             AuthUI.getInstance().signOut(context!!)
             activity?.finish()
-            startActivity(Intent(context, IntroActivity::class.java))
+            startActivity(Intent(context, WelcomeActivity::class.java))
         }
     }
 }

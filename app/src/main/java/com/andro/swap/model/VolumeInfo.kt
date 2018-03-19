@@ -1,48 +1,16 @@
 package com.andro.swap.model
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
-
-@Entity
 class VolumeInfo {
-
-    @PrimaryKey
-    val id: String? = null
-
-    @ColumnInfo(name = "name")
-    val title: String? = null
-
-    @ColumnInfo(name = "authors")
-    val authors: ArrayList<String>? = null
-
-    @ColumnInfo(name = "publisher")
-    val publisher: String? = null
-
-    @ColumnInfo(name = "publishedDate")
-    val publishedDate: String? = null
-
-    @ColumnInfo(name = "description")
-    val description: String? = null
-
-    @ColumnInfo(name = "industryIdentifiers")
-    val industryIdentifiers: ArrayList<IndustryIdentifier>? = null
-
-    @ColumnInfo(name = "pageCount")
-    val pageCount: String? = null
-
-    @ColumnInfo(name = "categories")
-    val categories: ArrayList<String>? = null
-
-    @ColumnInfo(name = "maturityRating")
-    val maturityRating: String? = null
-
-    @ColumnInfo(name = "imageLinks")
-    val imageLinks: ImageLinks? = null
-
-    @ColumnInfo(name = "language")
-    val language: String? = null
-
-    @ColumnInfo(name = "infoLink")
-    val infoLink: String? = null
+    var title: String? = null
+    var authors: ArrayList<String>? = null
+    var publisher: String? = null
+    var publishedDate: String? = null
+    var description: String? = null
+    var industryIdentifiers: ArrayList<IndustryIdentifier>? = null
+    var pageCount: String? = null
+    var categories: ArrayList<String>? = null
+    var maturityRating: String? = null
+    var imageLinks: ImageLinks? = null
+    var language: String? = null
+    var infoLink: String? = null
 }

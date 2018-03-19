@@ -33,13 +33,16 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AddBookActivity"
-            android:label="Add Book"
             android:parentActivityName=".activity.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeWithAppBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activity.ViewBook"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

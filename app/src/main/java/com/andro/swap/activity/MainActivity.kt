@@ -144,11 +144,6 @@ class MainActivity : AppCompatActivity() {
             R.id.addBook -> {
                 startActivity(Intent(this, AddBookActivity::class.java))
             }
-            R.id.logout -> {
-                AuthUI.getInstance().signOut(this)
-                finish()
-                startActivity(Intent(this, IntroActivity::class.java))
-            }
         }
         super.onOptionsItemSelected(item)
         return true

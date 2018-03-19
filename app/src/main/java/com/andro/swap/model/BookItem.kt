@@ -1,7 +1,7 @@
 package com.andro.swap.model
 
 class BookItem {
-
-    val selfLink: String? = null
-    val volumeInfo: VolumeInfo? = null
+    var id: String? = null
+    var selfLink: String? = null
+    var volumeInfo: VolumeInfo? = null
 }
