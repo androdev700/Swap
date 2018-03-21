@@ -15,10 +15,10 @@ class IntroActivity : AppIntro2() {
 
         setFadeAnimation()
 
-        addSlide(AppIntro2Fragment.newInstance("Simple", "Swap is simple to use", R.drawable.ic_home_black_24dp, resources.getColor(R.color.primaryColor)))
-        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home_black_24dp, resources.getColor(R.color.primaryColor)))
-        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home_black_24dp, resources.getColor(R.color.primaryColor)))
-        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home_black_24dp, resources.getColor(R.color.primaryColor)))
+        addSlide(AppIntro2Fragment.newInstance("Simple", "Swap is simple to use", R.drawable.ic_home, resources.getColor(R.color.primaryColor)))
+        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home, resources.getColor(R.color.primaryColor)))
+        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home, resources.getColor(R.color.primaryColor)))
+        addSlide(AppIntro2Fragment.newInstance("Welcome", ">SWAP DESCRIPTION<", R.drawable.ic_home, resources.getColor(R.color.primaryColor)))
 
         showSkipButton(true)
         isProgressButtonEnabled = true

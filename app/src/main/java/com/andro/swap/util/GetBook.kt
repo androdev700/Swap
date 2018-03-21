@@ -1,5 +1,6 @@
 package com.andro.swap.util
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.AsyncTask
@@ -8,12 +9,14 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.model.ApiResponse
 import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
 
-class GetBook(private val isbn: String, val context: Context) : AsyncTask<Void, Void, String>() {
+class GetBook(private val isbn: String, private val context: Context, private val activity: Activity)
+    : AsyncTask<Void, Void, String>() {
 
     private val progressDialog: ProgressDialog = ProgressDialog(context)
 
@@ -27,7 +30,7 @@ class GetBook(private val isbn: String, val context: Context) : AsyncTask<Void, 
 
     override fun doInBackground(vararg params: Void?): String? {
         val sh = HttpHandler()
-        return sh.makeServiceCall("https://www.googleapis.com/books/v1/volumes?q=${isbn}")
+        return sh.makeServiceCall("https://www.googleapis.com/books/v1/volumes?q=$isbn")
     }
 
     override fun onPostExecute(result: String?) {
@@ -55,8 +58,15 @@ class GetBook(private val isbn: String, val context: Context) : AsyncTask<Void, 
             if (uId != "") {
                 mDatabase.child("userdata").child(uId).child("bookCollection").child(apiResponse.items[position].id).setValue(apiResponse.items[position])
             }
+            Toast.makeText(context, "${bookList[position]} added to library.", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
+            activity.finish()
         }
-        dialog.show()
+
+        if (listView.adapter.isEmpty) {
+            Toast.makeText(context, "No books found for the provided ISBN", Toast.LENGTH_SHORT).show()
+        } else {
+            dialog.show()
+        }
     }
 }

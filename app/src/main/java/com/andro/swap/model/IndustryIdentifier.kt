@@ -1,6 +1,8 @@
 package com.andro.swap.model
 
-class IndustryIdentifier {
+import java.io.Serializable
+
+class IndustryIdentifier : Serializable {
     val type: String? = null
     val identifier: String? = null
 }

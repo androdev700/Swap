@@ -1,6 +1,8 @@
 package com.andro.swap.model
 
-class BookItem {
+import java.io.Serializable
+
+class BookItem : Serializable {
     var id: String? = null
     var selfLink: String? = null
     var volumeInfo: VolumeInfo? = null

@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.fragment.home.HomeFragment
@@ -95,6 +93,8 @@ class MainActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigation.selectedItemId = R.id.navigation_home
+
+
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -131,21 +131,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun onSignedOutCleanup() {
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.addBook -> {
-                startActivity(Intent(this, AddBookActivity::class.java))
-            }
-        }
-        super.onOptionsItemSelected(item)
-        return true
     }
 }

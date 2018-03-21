@@ -15,15 +15,22 @@ import kotlinx.android.synthetic.main.activity_add_book.*
 
 class AddBookActivity : AppCompatActivity() {
 
+    private lateinit var bookFetchThread: GetBook
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
+
+        setSupportActionBar(app_toolbar_add_book)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
 
         addBookButton.setOnClickListener {
             if (editTextISBN.text.length < 10) {
                 Toast.makeText(this, "ISBN too short", Toast.LENGTH_LONG).show()
             } else {
-                GetBook(editTextISBN.text.toString(), this)
+                bookFetchThread = GetBook(editTextISBN.text.toString(), this, this)
+                bookFetchThread.execute()
             }
         }
 
@@ -38,6 +45,11 @@ class AddBookActivity : AppCompatActivity() {
                 startActivity(Intent(it.context, ISBNScanner::class.java))
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        bookFetchThread.cancel(true)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

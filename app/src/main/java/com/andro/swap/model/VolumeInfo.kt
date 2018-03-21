@@ -1,6 +1,8 @@
 package com.andro.swap.model
 
-class VolumeInfo {
+import java.io.Serializable
+
+class VolumeInfo : Serializable {
     var title: String? = null
     var authors: ArrayList<String>? = null
     var publisher: String? = null

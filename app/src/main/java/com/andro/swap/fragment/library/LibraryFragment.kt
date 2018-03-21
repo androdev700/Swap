@@ -1,6 +1,7 @@
 package com.andro.swap.fragment.library
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.andro.swap.R
+import com.andro.swap.activity.AddBookActivity
 import com.andro.swap.model.BookItem
 import com.andro.swap.util.BookAdapter
 import com.google.firebase.database.*
@@ -35,8 +37,11 @@ class LibraryFragment : Fragment() {
         mDatabase = FirebaseDatabase.getInstance().reference.child("userdata").child(uId).child("bookCollection")
 
         val gridLayoutManager = GridLayoutManager(context, 2)
-        library_recycler.layoutManager = gridLayoutManager
-        library_recycler.setHasFixedSize(true)
+        if (library_recycler != null) {
+            library_recycler.layoutManager = gridLayoutManager
+            library_recycler.setHasFixedSize(true)
+        }
+
         val context = context
 
         booksListener = object : ValueEventListener {
@@ -48,9 +53,11 @@ class LibraryFragment : Fragment() {
                     booksList.add(it.getValue<BookItem>(BookItem::class.java)!!)
                 }
 
-                progress_container.visibility = View.GONE
-                booksAdapter = BookAdapter(booksList, context!!)
-                library_recycler.adapter = booksAdapter
+                if (progress_container != null)
+                    progress_container.visibility = View.GONE
+                booksAdapter = BookAdapter(booksList, context!!, activity!!)
+                if (library_recycler != null)
+                    library_recycler.adapter = booksAdapter
                 booksAdapter.notifyDataSetChanged()
 
                 if (booksList.size == 0) {
@@ -65,10 +72,14 @@ class LibraryFragment : Fragment() {
         }
 
         mDatabase.addListenerForSingleValueEvent(booksListener)
+
+        lib_fab.setOnClickListener {
+            startActivity(Intent(activity, AddBookActivity::class.java))
+        }
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onPause() {
+        super.onPause()
         mDatabase.removeEventListener(booksListener)
     }
 

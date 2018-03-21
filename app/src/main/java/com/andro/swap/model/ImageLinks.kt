@@ -1,6 +1,8 @@
 package com.andro.swap.model
 
-class ImageLinks {
+import java.io.Serializable
+
+class ImageLinks : Serializable {
     val smallThumbnail: String? = null
     val thumbnail: String? = null
 }
