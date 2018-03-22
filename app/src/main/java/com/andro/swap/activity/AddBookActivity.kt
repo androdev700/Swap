@@ -25,6 +25,8 @@ class AddBookActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = ""
 
+        bookFetchThread = GetBook(editTextISBN.text.toString(), this, this)
+
         addBookButton.setOnClickListener {
             if (editTextISBN.text.length < 10) {
                 Toast.makeText(this, "ISBN too short", Toast.LENGTH_LONG).show()

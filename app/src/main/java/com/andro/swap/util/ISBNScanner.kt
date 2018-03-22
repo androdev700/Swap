@@ -21,6 +21,7 @@ class ISBNScanner : AppCompatActivity(), ZBarScannerView.ResultHandler {
         super.onCreate(savedInstanceState)
         mScannerView = ZBarScannerView(this)
         mScannerView.setAutoFocus(true)
+        bookFetchThread = GetBook("", this, this)
         setContentView(mScannerView)
     }
 
@@ -44,6 +45,7 @@ class ISBNScanner : AppCompatActivity(), ZBarScannerView.ResultHandler {
             bookFetchThread.execute()
         } else {
             Toast.makeText(this, "Unable to process barcode, Try Again!", Toast.LENGTH_LONG).show()
+            finish()
         }
     }
 }

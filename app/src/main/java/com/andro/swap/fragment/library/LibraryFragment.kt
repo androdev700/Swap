@@ -26,10 +26,10 @@ class LibraryFragment : Fragment() {
         }
     }
 
-    private lateinit var mDatabase: DatabaseReference
-    private lateinit var booksListener: ValueEventListener
-    private lateinit var booksList: ArrayList<BookItem>
-    private lateinit var booksAdapter: BookAdapter
+    private var mDatabase: DatabaseReference? = null
+    private var booksListener: ValueEventListener? = null
+    private var booksList: ArrayList<BookItem>? = null
+    private var booksAdapter: BookAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,23 +44,25 @@ class LibraryFragment : Fragment() {
 
         val context = context
 
+        booksList = java.util.ArrayList()
+        booksAdapter = BookAdapter(booksList!!, context!!, activity!!)
+
         booksListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get BookItem object and use the values to update the UI
                 val children = dataSnapshot.children
-                booksList = java.util.ArrayList()
                 children.forEach {
-                    booksList.add(it.getValue<BookItem>(BookItem::class.java)!!)
+                    booksList?.add(it.getValue<BookItem>(BookItem::class.java)!!)
                 }
 
                 if (progress_container != null)
                     progress_container.visibility = View.GONE
-                booksAdapter = BookAdapter(booksList, context!!, activity!!)
-                if (library_recycler != null)
+                if (library_recycler != null) {
                     library_recycler.adapter = booksAdapter
-                booksAdapter.notifyDataSetChanged()
+                    booksAdapter?.notifyDataSetChanged()
+                }
 
-                if (booksList.size == 0) {
+                if (booksList?.size == 0) {
                     Toast.makeText(context, "You have no books in your library.", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -71,7 +73,7 @@ class LibraryFragment : Fragment() {
             }
         }
 
-        mDatabase.addListenerForSingleValueEvent(booksListener)
+        mDatabase?.addListenerForSingleValueEvent(booksListener)
 
         lib_fab.setOnClickListener {
             startActivity(Intent(activity, AddBookActivity::class.java))
@@ -80,7 +82,7 @@ class LibraryFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        mDatabase.removeEventListener(booksListener)
+        mDatabase?.removeEventListener(booksListener)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
