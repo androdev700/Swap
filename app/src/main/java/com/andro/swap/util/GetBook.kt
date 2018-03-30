@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.os.AsyncTask
 import android.support.v7.app.AlertDialog
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,7 +13,10 @@ import android.widget.ListView
 import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.model.ApiResponse
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 
 class GetBook(private val isbn: String, private val context: Context, private val activity: Activity)
@@ -51,10 +55,31 @@ class GetBook(private val isbn: String, private val context: Context, private va
         val listView = mLayout.findViewById<ListView>(R.id.bookSelectionList)
         val adapter = ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, bookList)
         listView.adapter = adapter
-        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, id ->
-            val mDatabase = FirebaseDatabase.getInstance().reference
-            mDatabase.child("books").child(apiResponse.items!![position].id).setValue(apiResponse.items[position])
+        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             val uId = context.getSharedPreferences("userData", Context.MODE_PRIVATE).getString("uId", "")
+            val userName = context.getSharedPreferences("userData", Context.MODE_PRIVATE)?.getString("userName", "No Data")
+            val mDatabase = FirebaseDatabase.getInstance().reference
+
+            val newOwner = HashMap<String, Any>()
+            newOwner["name"] = userName!!
+
+            mDatabase.child("books").child(apiResponse.items!![position].id).addListenerForSingleValueEvent(object : ValueEventListener {
+
+                override fun onCancelled(databaseError: DatabaseError?) {
+
+                }
+
+                override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                    if (!dataSnapshot?.exists()!!) {
+                        mDatabase.child("books").child(apiResponse.items[position].id).setValue(apiResponse.items[position])
+                        mDatabase.child("books").child(apiResponse.items[position].id).child("owners").child(uId).updateChildren(newOwner)
+                    } else {
+                        Log.d("Firebase", "Snapshot already exists!")
+                        mDatabase.child("books").child(apiResponse.items[position].id).child("owners").child(uId).updateChildren(newOwner)
+                    }
+                }
+            })
+
             if (uId != "") {
                 mDatabase.child("userdata").child(uId).child("bookCollection").child(apiResponse.items[position].id).setValue(apiResponse.items[position])
             }
