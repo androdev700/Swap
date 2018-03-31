@@ -10,11 +10,11 @@ import com.andro.swap.R
 import com.andro.swap.adapter.OwnerAdapter
 import com.andro.swap.fragment.library.LibraryFragment
 import com.andro.swap.model.BookItem
+import com.andro.swap.model.Owner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_view_book.*
-
 
 class ViewBook : AppCompatActivity() {
 
@@ -23,8 +23,7 @@ class ViewBook : AppCompatActivity() {
     private var ownerAdapter: OwnerAdapter? = null
     private var booksListener: ValueEventListener? = null
     private var booksList: ArrayList<BookItem>? = null
-    private var ownerList: ArrayList<String>? = null
-
+    private var ownerList: ArrayList<Owner>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_book)
@@ -72,6 +71,9 @@ class ViewBook : AppCompatActivity() {
         val context: Context = this
         ownerList = ArrayList()
 
+        val userName = getSharedPreferences("userData", Context.MODE_PRIVATE)?.getString("userName", "No Data")
+        val uId = getSharedPreferences("userData", Context.MODE_PRIVATE).getString("uId", "")
+
         mDatabase = FirebaseDatabase.getInstance().reference.child("books")
         booksListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -81,9 +83,12 @@ class ViewBook : AppCompatActivity() {
                     val fetchedBook = it.getValue<BookItem>(BookItem::class.java)!!
                     if (fetchedBook.id == book.id) {
                         fetchedBook.owners?.forEach { _, u ->
-                            var name = u.toString()
-                            name = name.substring(name.indexOf("=") + 1, name.length - 1)
-                            ownerList?.add(name)
+                            val owner = getOwner(u.toString())
+                            if (owner.name != userName) {
+                                ownerList?.add(owner)
+                            } else {
+                                book_rating.rating = owner.rating!!
+                            }
                         }
                         ownerRecycler.adapter = OwnerAdapter(ownerList!!, context)
                     }
@@ -95,6 +100,29 @@ class ViewBook : AppCompatActivity() {
             }
         }
         mDatabase?.addListenerForSingleValueEvent(booksListener)
+
+        val newOwner = HashMap<String, Any>()
+        newOwner["name"] = userName!!
+
+        val ratingReference = mDatabase?.child(book.id)?.child("owners")?.child(uId)
+        book_rate_book.setOnClickListener {
+            Log.d("ViewBook", book_rating.rating.toString())
+            newOwner["rating"] = book_rating.rating
+            ratingReference?.updateChildren(newOwner)
+        }
+    }
+
+    private fun getOwner(data: String): Owner {
+        val hasComma: Boolean = data.indexOf(",") > 0
+        val owner = Owner()
+        if (!hasComma) {
+            owner.name = data.substring(data.indexOf("=") + 1, data.indexOf("}"))
+            owner.rating = 0f
+        } else {
+            owner.name = data.substring(data.indexOf("name=") + 5, data.indexOf(","))
+            owner.rating = data.substring(data.indexOf("rating=") + 7, data.indexOf("}")).toFloat()
+        }
+        return owner
     }
 
     override fun onPause() {

@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "784679449890-j8g2e5igdoehknb7vaitmnvv1e2jamgl.apps.googleusercontent.com",
+          "client_id": "784679449890-nj9nak0qctsjjudb87n6rs2knar6a3am.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.andro.swap",
-            "certificate_hash": "7055cc6885c013c561a42b81a63b5bac56916c05"
+            "certificate_hash": "373434e1d8bfe444ede9345a61a9cd53f89b1645"
           }
         },
         {
@@ -40,15 +40,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "784679449890-c4pgknigblai0bqla72rqal72lcgvkdr.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
               "client_id": "784679449890-o3u6sbs13hn4ms09cg9b61kddfr9hohl.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.blogreader.test11.SWAP"
               }
+            },
+            {
+              "client_id": "784679449890-c4pgknigblai0bqla72rqal72lcgvkdr.apps.googleusercontent.com",
+              "client_type": 3
             }
           ]
         },

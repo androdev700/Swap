@@ -1,4 +1,4 @@
-package com.andro.swap.util
+package com.andro.swap.adapter
 
 import android.app.Activity
 import android.content.Context

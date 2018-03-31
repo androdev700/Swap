@@ -13,7 +13,7 @@ import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.activity.AddBookActivity
 import com.andro.swap.model.BookItem
-import com.andro.swap.util.BookAdapter
+import com.andro.swap.adapter.BookAdapter
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_library.*
 

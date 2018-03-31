@@ -77,14 +77,18 @@
                 android:textStyle="bold" />
 
             <RatingBar
-                style="?android:attr/ratingBarStyleIndicator"
+                android:id="@+id/book_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/book_rate_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:numStars="5"
-                android:rating="3"
-                android:stepSize=".5"
-                android:visibility="gone" />
+                android:text="Rate Book"
+                android:textColor="@android:color/white" />
 
             <com.github.zagum.expandicon.ExpandIconView
                 android:id="@+id/expand_book_data"
