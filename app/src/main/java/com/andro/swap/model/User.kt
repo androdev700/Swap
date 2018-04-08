@@ -1,9 +1,10 @@
 package com.andro.swap.model
 
-class User {
+import java.io.Serializable
+
+class User : Serializable {
     var name: String? = null
     var email: String? = null
-    var bookCollection: ArrayList<BookItem>? = null
-    var favouriteCategory: ArrayList<String>? = null
-    var favouriteAuthor: ArrayList<String>? = null
+    var uid: String? = null
+    var bookCollection: HashMap<String, BookItem>? = null
 }

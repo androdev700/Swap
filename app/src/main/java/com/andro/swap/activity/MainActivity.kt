@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.fragment.home.HomeFragment
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         private const val RC_SIGN_IN = 1
     }
 
-    // Firebase instance variables
     private var mFirebaseDatabase: FirebaseDatabase? = null
     private var mFirebaseAuth: FirebaseAuth? = null
     private var mAuthStateListener: FirebaseAuth.AuthStateListener? = null
@@ -62,6 +63,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val id = item!!.itemId
+        when (id) {
+            R.id.navigation_search -> {
+                startActivity(Intent(this, SearchActivity::class.java))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

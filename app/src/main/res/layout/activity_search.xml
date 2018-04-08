@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.andro.swap.activity.MainActivity">
+    android:orientation="vertical"
+    tools:context=".activity.SearchActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/app_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
+        android:layout_height="48dp"
         android:background="@color/primaryColor"
         android:elevation="4dp"
         android:theme="@style/LightOverflow"
@@ -22,27 +21,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
-            android:text="@string/app_name_caps"
+            android:singleLine="true"
+            android:text="Search User"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
     </android.support.v7.widget.Toolbar>
 
-    <FrameLayout
-        android:id="@+id/main_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/navigation"
-        android:layout_below="@+id/app_toolbar" />
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <EditText
+        android:id="@+id/search_query_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation" />
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:hint="Enter user name"
+        android:inputType="textPersonName" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/search_user_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Search"
+        android:textColor="@android:color/white" />
+
+    <ListView
+        android:id="@+id/user_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

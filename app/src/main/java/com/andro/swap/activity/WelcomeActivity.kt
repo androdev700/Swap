@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import java.util.*
+import kotlin.collections.HashMap
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -74,6 +75,20 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun onSignedInInitialize(user: FirebaseUser) {
+        val nameMap = HashMap<String, Any>()
+        nameMap["name"] = user.displayName!!
+
+        val emailMap = HashMap<String, Any>()
+        emailMap["email"] = user.email!!
+
+        val uIdMap = HashMap<String, Any>()
+        uIdMap["uid"] = user.uid
+
+        val userData = FirebaseDatabase.getInstance().reference
+        userData.child("userdata").child(user.uid).updateChildren(nameMap)
+        userData.child("userdata").child(user.uid).updateChildren(emailMap)
+        userData.child("userdata").child(user.uid).updateChildren(uIdMap)
+
         getSharedPreferences("userData", Context.MODE_PRIVATE).edit().putString("userName", user.displayName).apply()
         getSharedPreferences("userData", Context.MODE_PRIVATE).edit().putString("email", user.email).apply()
         getSharedPreferences("userData", Context.MODE_PRIVATE).edit().putString("uId", user.uid).apply()

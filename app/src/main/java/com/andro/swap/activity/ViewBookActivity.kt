@@ -16,13 +16,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_view_book.*
 
-class ViewBook : AppCompatActivity() {
+class ViewBookActivity : AppCompatActivity() {
 
     private var mDatabase: DatabaseReference? = null
     private var onOffTrigger: Boolean = true
-    private var ownerAdapter: OwnerAdapter? = null
     private var booksListener: ValueEventListener? = null
-    private var booksList: ArrayList<BookItem>? = null
     private var ownerList: ArrayList<Owner>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +38,8 @@ class ViewBook : AppCompatActivity() {
         requestOptions.placeholder(R.drawable.ic_book_placeholder)
         requestOptions.error(R.drawable.ic_book_placeholder)
 
-        Glide.with(this)
-                .setDefaultRequestOptions(requestOptions)
-                .load(book.volumeInfo?.imageLinks?.thumbnail)
-                .into(bookCover)
+        Glide.with(this).setDefaultRequestOptions(requestOptions)
+                .load(book.volumeInfo?.imageLinks?.thumbnail).into(bookCover)
 
         bookTitle.text = book.volumeInfo?.title
         bookAuthor.text = book.volumeInfo?.authors?.toString()
@@ -106,7 +102,7 @@ class ViewBook : AppCompatActivity() {
 
         val ratingReference = mDatabase?.child(book.id)?.child("owners")?.child(uId)
         book_rate_book.setOnClickListener {
-            Log.d("ViewBook", book_rating.rating.toString())
+            Log.d("ViewBookActivity", book_rating.rating.toString())
             newOwner["rating"] = book_rating.rating
             ratingReference?.updateChildren(newOwner)
         }

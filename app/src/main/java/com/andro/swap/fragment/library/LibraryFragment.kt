@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.activity.AddBookActivity
-import com.andro.swap.model.BookItem
 import com.andro.swap.adapter.BookAdapter
+import com.andro.swap.model.BookItem
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_library.*
 
@@ -36,12 +36,10 @@ class LibraryFragment : Fragment() {
         val uId = activity?.getSharedPreferences("userData", Context.MODE_PRIVATE)!!.getString("uId", "")
         mDatabase = FirebaseDatabase.getInstance().reference.child("userdata").child(uId).child("bookCollection")
 
-        val gridLayoutManager = GridLayoutManager(context, 2)
         if (library_recycler != null) {
-            library_recycler.layoutManager = gridLayoutManager
+            library_recycler.layoutManager = GridLayoutManager(context, 2)
             library_recycler.setHasFixedSize(true)
         }
-
         val context = context
 
         booksList = java.util.ArrayList()

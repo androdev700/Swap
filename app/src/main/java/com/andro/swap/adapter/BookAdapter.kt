@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.andro.swap.R
-import com.andro.swap.activity.ViewBook
+import com.andro.swap.activity.ViewBookActivity
 import com.andro.swap.model.BookItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -44,7 +44,7 @@ class BookAdapter(private val books: ArrayList<BookItem>, private val context: C
                     .into(itemView.book_cover)
 
             itemView.setOnClickListener {
-                val intent = Intent(activity, ViewBook::class.java)
+                val intent = Intent(activity, ViewBookActivity::class.java)
                 intent.putExtra("bookData", book)
                 context.startActivity(intent)
             }
