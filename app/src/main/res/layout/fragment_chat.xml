@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".fragment.review.ReviewFragment">
+    tools:context=".fragment.chat.ChatFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_centerInParent="true"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="REVIEW UNDER CONSTRUCTION!"
+        android:text="NO CHATS YET!"
         android:textSize="20sp"
         android:textStyle="bold" />
 

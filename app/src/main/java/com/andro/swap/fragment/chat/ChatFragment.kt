@@ -1,4 +1,4 @@
-package com.andro.swap.fragment.review
+package com.andro.swap.fragment.chat
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,16 +8,16 @@ import android.view.ViewGroup
 
 import com.andro.swap.R
 
-class ReviewFragment : Fragment() {
+class ChatFragment : Fragment() {
 
     companion object {
-        fun newInstance(): ReviewFragment {
-            return ReviewFragment()
+        fun newInstance(): ChatFragment {
+            return ChatFragment()
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_review, container, false)
+        return inflater.inflate(R.layout.fragment_chat, container, false)
     }
 }

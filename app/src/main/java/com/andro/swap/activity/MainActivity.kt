@@ -14,7 +14,7 @@ import com.andro.swap.R
 import com.andro.swap.fragment.home.HomeFragment
 import com.andro.swap.fragment.library.LibraryFragment
 import com.andro.swap.fragment.profile.ProfileFragment
-import com.andro.swap.fragment.review.ReviewFragment
+import com.andro.swap.fragment.chat.ChatFragment
 import com.andro.swap.util.BottomNavigationViewHelper
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_review -> {
                 app_toolbar_text.text = getString(R.string.review_caps)
-                fragmentTransaction = supportFragmentManager.beginTransaction().replace(R.id.main_frame, ReviewFragment.newInstance())
+                fragmentTransaction = supportFragmentManager.beginTransaction().replace(R.id.main_frame, ChatFragment.newInstance())
                 fragmentTransaction?.commit()
                 return@OnNavigationItemSelectedListener true
             }
