@@ -3,8 +3,8 @@ package com.andro.swap.fragment.library
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +17,7 @@ import com.andro.swap.model.BookItem
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_library.*
 
-class LibraryFragment : Fragment() {
+class LibraryFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         const val TAG = "LibraryFragment"
@@ -37,7 +37,7 @@ class LibraryFragment : Fragment() {
         mDatabase = FirebaseDatabase.getInstance().reference.child("userdata").child(uId).child("bookCollection")
 
         if (library_recycler != null) {
-            library_recycler.layoutManager = GridLayoutManager(context, 2)
+            library_recycler.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
             library_recycler.setHasFixedSize(true)
         }
         val context = context

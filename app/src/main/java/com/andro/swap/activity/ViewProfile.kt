@@ -2,8 +2,8 @@ package com.andro.swap.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import com.andro.swap.R
 import com.andro.swap.adapter.BookAdapter
 import com.andro.swap.model.FollowUser
@@ -36,7 +36,7 @@ class ViewProfile : AppCompatActivity() {
 
         booksAdapter = BookAdapter(ArrayList(user.bookCollection?.values), this, this)
 
-        library_profile.layoutManager = GridLayoutManager(this, 2)
+        library_profile.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
         library_profile.setHasFixedSize(true)
         library_profile.adapter = booksAdapter
 

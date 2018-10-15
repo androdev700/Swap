@@ -2,8 +2,8 @@ package com.andro.swap.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.Nullable
-import android.support.v4.app.Fragment
+import androidx.annotation.Nullable
+import androidx.fragment.app.Fragment
 import com.andro.swap.R
 import com.github.paolorotolo.appintro.AppIntro2
 import com.github.paolorotolo.appintro.AppIntro2Fragment
@@ -32,13 +32,13 @@ class IntroActivity : AppIntro2() {
         isProgressButtonEnabled = true
     }
 
-    override fun onSkipPressed(currentFragment: Fragment) {
+    override fun onSkipPressed(currentFragment: androidx.fragment.app.Fragment) {
         super.onSkipPressed(currentFragment)
         finish()
         startActivity(Intent(this@IntroActivity, WelcomeActivity::class.java))
     }
 
-    override fun onDonePressed(currentFragment: Fragment) {
+    override fun onDonePressed(currentFragment: androidx.fragment.app.Fragment) {
         super.onDonePressed(currentFragment)
         finish()
         startActivity(Intent(this@IntroActivity, WelcomeActivity::class.java))

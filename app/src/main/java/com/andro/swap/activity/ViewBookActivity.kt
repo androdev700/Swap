@@ -2,8 +2,8 @@ package com.andro.swap.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import com.andro.swap.R
@@ -50,7 +50,7 @@ class ViewBookActivity : AppCompatActivity() {
         bookPublisher.text = book.volumeInfo?.publisher
         bookPublishedDate.text = book.volumeInfo?.publishedDate
 
-        ownerRecycler.layoutManager = LinearLayoutManager(this)
+        ownerRecycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         ownerRecycler.setHasFixedSize(true)
 
         expand_book_data.setOnClickListener {

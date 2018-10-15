@@ -4,9 +4,9 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.andro.swap.R
 import com.andro.swap.util.GetBook
@@ -28,7 +28,7 @@ class AddBookActivity : AppCompatActivity() {
         bookFetchThread = GetBook(editTextISBN.text.toString(), this, this)
 
         addBookButton.setOnClickListener {
-            if (editTextISBN.text.length < 10) {
+            if (editTextISBN.text!!.length < 10) {
                 Toast.makeText(this, "ISBN too short", Toast.LENGTH_LONG).show()
             } else {
                 bookFetchThread = GetBook(editTextISBN.text.toString(), this, this)

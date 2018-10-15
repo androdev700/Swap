@@ -4,9 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.FragmentTransaction
-import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.FragmentTransaction
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -34,8 +35,8 @@ class MainActivity : AppCompatActivity() {
     private var mFirebaseAuth: FirebaseAuth? = null
     private var mAuthStateListener: FirebaseAuth.AuthStateListener? = null
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        val fragmentTransaction: FragmentTransaction?
+    private val mOnNavigationItemSelectedListener = com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        val fragmentTransaction: androidx.fragment.app.FragmentTransaction?
         when (item.itemId) {
             R.id.navigation_home -> {
                 app_toolbar_text.text = getString(R.string.home_caps)
@@ -114,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == Activity.RESULT_OK) {
